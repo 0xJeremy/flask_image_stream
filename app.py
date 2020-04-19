@@ -1,5 +1,4 @@
 from flask import Flask, send_file
-from threading import Thread
 import cv2
 
 class camera:
