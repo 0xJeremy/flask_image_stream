@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://127.0.0.1:5000/'
+url = 'http://192.168.1.49:5000/'
 
 def Get_Image():
 	try:
