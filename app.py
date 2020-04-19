@@ -1,23 +1,18 @@
 from flask import Flask, send_file
 import cv2
 
-class camera:
-	def __init__(self):
-		self.cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0)
 
-	def capture(self):
-		ret, frame = self.cam.read()
-		cv2.imwrite('image.png', frame)
-
-cam = camera()
+def capture():
+	ret, frame = cam.read()
+	cv2.imwrite('image.png', frame)
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-	global camera
 	try:
-		cam.capture()
+		capture()
 		return send_file('image.png', attachment_filename='image.png')
 	except Exception as e:
 		return str(e)
