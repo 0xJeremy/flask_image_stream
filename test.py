@@ -1,14 +1,14 @@
 import requests
 
-url = 'http://192.168.1.49:8080/'
+url = 'http://127.0.0.1:5000/'
 
 def Get_Image():
 	try:
-		data = requests.get(url + 'get_image')
-		print(data)
+		data = requests.get(url)
+		f = open('image.png', 'wb')
+		f.write(data.content)
+		f.close()
 	except Exception as e:
 		print(e)
-		data = None
-	return data
 
 Get_Image()
