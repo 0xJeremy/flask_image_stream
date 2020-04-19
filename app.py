@@ -16,17 +16,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-	return "Hello there"
-
-@app.route('/get_image', methods=['GET'])
-def get_image():
 	global camera
 	try:
 		cam.capture()
 		return send_file('image.png', attachment_filename='image.png')
 	except Exception as e:
 		return str(e)
-
-if __name__ == '__main__':
-	app.run(host='0.0.0.0', debug=True)
 	
